@@ -1,0 +1,1 @@
+{"uuid":"8df4e796-ec59-475c-92ad-5c9c156f2b44","name":"tests.DynamicControl_test.close","children":["2556c1e7-fcde-49af-8868-a57920629cc5"],"description":"","befores":[],"afters":[{"name":"close","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1747380442473,"stop":1747380442643}],"start":1747380442473,"stop":1747380442643}

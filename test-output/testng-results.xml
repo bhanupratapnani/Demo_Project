@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="3" total="4" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-05-30T09:37:32 IST" name="Default suite" finished-at="2025-05-30T09:37:44 IST" duration-ms="11492">
+    <groups>
+    </groups>
+    <test started-at="2025-05-30T09:37:32 IST" name="Default test" finished-at="2025-05-30T09:37:44 IST" duration-ms="11492">
+      <class name="tests.AB_testing_test">
+        <test-method is-config="true" signature="ABtesting()[pri:0, instance:tests.AB_testing_test@3e62d773]" started-at="2025-05-30T09:37:32 IST" name="ABtesting" finished-at="2025-05-30T09:37:38 IST" duration-ms="6022" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ABtesting -->
+        <test-method signature="paragraphends()[pri:0, instance:tests.AB_testing_test@3e62d773]" started-at="2025-05-30T09:37:38 IST" name="paragraphends" finished-at="2025-05-30T09:37:43 IST" duration-ms="5140" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- paragraphends -->
+        <test-method is-config="true" signature="close()[pri:0, instance:tests.AB_testing_test@3e62d773]" started-at="2025-05-30T09:37:43 IST" name="close" finished-at="2025-05-30T09:37:44 IST" duration-ms="148" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- close -->
+      </class> <!-- tests.AB_testing_test -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

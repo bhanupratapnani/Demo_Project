@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="tests.BasicAuth_test"/>
+      <class name="tests.DisappearingElement_test"/>
+      <class name="tests.dropdown_test"/>
+      <class name="tests.DragandDrop_test"/>
+      <class name="tests.AddRemoveElement_test"/>
+      <class name="tests.DigestAuth_test"/>
+      <class name="tests.AB_testing_test"/>
+      <class name="tests.context_test"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
