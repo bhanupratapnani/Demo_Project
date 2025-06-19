@@ -7,20 +7,20 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import base.setup;
-import base.takescreenshot;
+import base.Screenshot;
 import pages.BasicAuth_page;
 
 public class BasicAuth_test extends setup {
 	
 	BasicAuth_page bapage;
-	takescreenshot ss;
+	Screenshot ss;
 	
 	@BeforeMethod
 	public void start() throws IOException 
 	{
 		basesetup();
 		bapage =new BasicAuth_page(driver);
-		ss=new takescreenshot(driver);
+		ss=new Screenshot(driver);
 		bapage.auth();
 	}
 	@Test

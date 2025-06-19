@@ -10,20 +10,20 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import base.setup;
-import base.takescreenshot;
+import base.Screenshot;
 import pages.DragandDrop_page;
 
 public class DragandDrop_test extends setup{
 	
 	DragandDrop_page ddpage;
-	takescreenshot ss;
+	Screenshot ss;
 	
 	@BeforeMethod
 	public void dragdrop() throws IOException 
 	{
 		basesetup();
 		ddpage=new DragandDrop_page(driver);
-		ss=new takescreenshot(driver);
+		ss=new Screenshot(driver);
 		ddpage.dragdrop();
 	}
 	@Test

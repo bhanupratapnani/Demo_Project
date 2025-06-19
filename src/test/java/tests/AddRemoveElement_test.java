@@ -8,20 +8,20 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import base.setup;
-import base.takescreenshot;
+import base.Screenshot;
 import pages.AddRemoveElement_page;
 
 public class AddRemoveElement_test extends setup{
 	
 	AddRemoveElement_page arpage;
-	takescreenshot ss;
+	Screenshot ss;
 	
 	@BeforeMethod
 	public void start() throws IOException 
 	{
 		basesetup();
 		arpage=new AddRemoveElement_page(driver);
-		ss=new takescreenshot(driver);
+		ss=new Screenshot(driver);
 		arpage.addremove();
 	}
 	@Test

@@ -8,20 +8,20 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import base.setup;
-import base.takescreenshot;
+import base.Screenshot;
 import pages.AB_testing_page;
 
 public class AB_testing_test extends setup{
 	
 	AB_testing_page abpage;
-	takescreenshot ss;
+	Screenshot ss;
 	
 	@BeforeMethod
 	public void ABtesting() throws IOException {
 		
 		basesetup();
 		abpage=new AB_testing_page(driver);
-		ss=new takescreenshot(driver);
+		ss=new Screenshot(driver);
 		
 		abpage.abtesting();
 	}

@@ -8,20 +8,20 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import base.setup;
-import base.takescreenshot;
+import base.Screenshot;
 import pages.DynamicContent_page;
 
 public class DynamicContent_test extends setup{
 	
 	DynamicContent_page dcpage;
-	takescreenshot ss;
+	Screenshot ss;
 	
 	@BeforeMethod
 	public void start() throws IOException 
 	{
 		basesetup();
 		dcpage=new DynamicContent_page(driver);
-		ss=new takescreenshot(driver);
+		ss=new Screenshot(driver);
 		
 		dcpage.dynamic();
 	}

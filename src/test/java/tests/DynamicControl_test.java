@@ -8,20 +8,20 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import base.setup;
-import base.takescreenshot;
+import base.Screenshot;
 import pages.DynamicControl_page;
 
 public class DynamicControl_test extends setup{
 	
 	DynamicControl_page dypage;
-	takescreenshot ss;
+	Screenshot ss;
 	
 	@BeforeMethod
 	public void start() throws IOException 
 	{
 		basesetup();
 		dypage=new DynamicControl_page(driver);
-		ss=new takescreenshot(driver);
+		ss=new Screenshot(driver);
 		dypage.control();
 	}
 	@Test

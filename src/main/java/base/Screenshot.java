@@ -9,9 +9,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-public class takescreenshot extends setup{
+public class Screenshot extends setup{
 
-public takescreenshot(WebDriver driver) {
+public Screenshot(WebDriver driver) {
 	
 	}
 

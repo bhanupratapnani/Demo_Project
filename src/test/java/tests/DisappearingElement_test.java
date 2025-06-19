@@ -10,20 +10,20 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import base.setup;
-import base.takescreenshot;
+import base.Screenshot;
 import pages.DisappearingElement_page;
 
 public class DisappearingElement_test extends setup{
 	
 	DisappearingElement_page depage;
-	takescreenshot ss;
+	Screenshot ss;
 	
 	@BeforeMethod
 	public void disappearingelement() throws IOException 
 	{
 		basesetup();
 		depage=new DisappearingElement_page(driver);
-		ss=new takescreenshot(driver);
+		ss=new Screenshot(driver);
 		depage.dele();
 	}
 	@Test
