@@ -3,13 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.AB_testing_test">
+      <class name="rough.prac5">
         <methods>
-          <include name="ABtesting"/>
-          <include name="close"/>
-          <include name="paragraphstart"/>
+          <include name="test"/>
         </methods>
-      </class> <!-- tests.AB_testing_test -->
+      </class> <!-- rough.prac5 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

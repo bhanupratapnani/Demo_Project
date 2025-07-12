@@ -1,0 +1,15 @@
+Message: "Hello" sent at 2025-07-12 16:59:40 | Time Taken: 186 ms
+Message: "How are you?" sent at 2025-07-12 16:59:41 | Time Taken: 131 ms
+Message: "This is update" sent at 2025-07-12 16:59:42 | Time Taken: 125 ms
+Message: "File coming next" sent at 2025-07-12 16:59:43 | Time Taken: 131 ms
+Message: "Photo coming next" sent at 2025-07-12 16:59:44 | Time Taken: 122 ms
+File: "lab1.pdf" sent at 2025-07-12 16:59:46 | Time Taken: 136 ms
+File: "lab1.pdf" sent at 2025-07-12 16:59:48 | Time Taken: 160 ms
+File: "lab3.pdf" sent at 2025-07-12 16:59:50 | Time Taken: 114 ms
+File: "lab3.pdf" sent at 2025-07-12 16:59:52 | Time Taken: 93 ms
+File: "lab3.pdf" sent at 2025-07-12 16:59:54 | Time Taken: 93 ms
+Photo: "A.jpg" sent at 2025-07-12 16:59:56 | Time Taken: 129 ms
+Photo: "B.jpg" sent at 2025-07-12 16:59:58 | Time Taken: 99 ms
+Photo: "C.png" sent at 2025-07-12 17:00:00 | Time Taken: 102 ms
+Photo: "D.jpg" sent at 2025-07-12 17:00:03 | Time Taken: 113 ms
+Photo: "E.png" sent at 2025-07-12 17:00:05 | Time Taken: 119 ms

@@ -2,24 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-06-19T08:56:29 IST" name="Default suite" finished-at="2025-06-19T08:56:44 IST" duration-ms="14371">
+  <suite started-at="2025-07-12T18:21:37 IST" name="ParallelTestSuite" finished-at="2025-07-12T18:22:18 IST" duration-ms="41153">
     <groups>
     </groups>
-    <test started-at="2025-06-19T08:56:29 IST" name="Default test" finished-at="2025-06-19T08:56:44 IST" duration-ms="14371">
-      <class name="tests.Context_test">
-        <test-method is-config="true" signature="start()[pri:0, instance:tests.Context_test@376a0d86]" started-at="2025-06-19T08:56:29 IST" name="start" finished-at="2025-06-19T08:56:37 IST" duration-ms="7942" status="PASS">
+    <test started-at="2025-07-12T18:21:37 IST" name="Test" finished-at="2025-07-12T18:22:18 IST" duration-ms="41153">
+      <class name="rough.prac5">
+        <test-method signature="test()[pri:0, instance:rough.prac5@54e041a4]" started-at="2025-07-12T18:21:37 IST" name="test" finished-at="2025-07-12T18:22:17 IST" duration-ms="40884" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- start -->
-        <test-method signature="click()[pri:0, instance:tests.Context_test@376a0d86]" started-at="2025-06-19T08:56:37 IST" name="click" finished-at="2025-06-19T08:56:43 IST" duration-ms="5736" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- click -->
-        <test-method is-config="true" signature="close()[pri:0, instance:tests.Context_test@376a0d86]" started-at="2025-06-19T08:56:43 IST" name="close" finished-at="2025-06-19T08:56:44 IST" duration-ms="350" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- close -->
-      </class> <!-- tests.Context_test -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+        </test-method> <!-- test -->
+      </class> <!-- rough.prac5 -->
+    </test> <!-- Test -->
+  </suite> <!-- ParallelTestSuite -->
 </testng-results>
