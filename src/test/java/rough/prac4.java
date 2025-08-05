@@ -57,6 +57,7 @@ public class prac4 {
 	                WebElement fileUpload = driver.findElement(By.xpath("//input[@type='file']")); // Change locator
 	                fileUpload.sendKeys(new File(filePath).getAbsolutePath());
 	                driver.findElement(By.xpath("//img[@class='img-fluid p-2']")).click();
+	                
 	                long end = System.currentTimeMillis();
 	                long duration = end - start;
 
@@ -71,6 +72,7 @@ public class prac4 {
 	                WebElement photoUpload = driver.findElement(By.xpath("//input[@type='file']")); // Change locator
 	                photoUpload.sendKeys(new File(photoPath).getAbsolutePath());
 	                driver.findElement(By.xpath("//img[@class='img-fluid p-2']")).click();
+	                
 	                long end = System.currentTimeMillis();
 	                long duration = end - start;
 

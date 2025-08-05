@@ -1,129 +1,82 @@
 package rough;
 
-
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.time.Duration;
+import java.util.List;
 
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.*;
+import org.openqa.selenium.edge.EdgeDriver;
 
 public class prac6 {
 
-    public static void main(String[] args) {
-        ExecutorService executor = Executors.newFixedThreadPool(10); // Pool size 10
+	public static void main(String[] args) throws InterruptedException, IOException {
 
-        for (int i = 1; i <= 2; i++) {
-            int runId = i;
-            executor.submit(() -> {
-                try {
-                    runTest(runId);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            });
-        }
+		WebDriver driver = new EdgeDriver();
+		driver.get("https://www.flipkart.com/");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
-        executor.shutdown();
-    }
+		try {
+			driver.findElement(By.xpath("//button[contains(text(),'✕')]")).click();
+		} catch (Exception e) {
+			// Ignore if popup not found
+		}
+		String name="iphone 16";
+		WebElement search = driver.findElement(By.xpath("//input[@class='Pke_EE']"));
+		search.sendKeys(name);
+		search.sendKeys(Keys.ENTER);
 
-    public static void runTest(int runId) throws InterruptedException, IOException {
-    	
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://dev.iamstillalive.com/login/");
+		Thread.sleep(2000);
 
-        driver.findElement(By.id("email")).sendKeys("edmundo.johnson@smail.com");
-        driver.findElement(By.id("password")).sendKeys("Pass@123");
-        driver.findElement(By.xpath("//button[@class='btn btn-gradient text-center fs-6 w-25 rounded-5 px-3 font-inter']")).click();
-        driver.findElement(By.xpath("//img[@class='bird-img']")).click();
+		Workbook workbook = new XSSFWorkbook();
+		Sheet sheet = workbook.createSheet("Products");
 
-        Workbook workbook = new XSSFWorkbook();
-        Sheet sheet = workbook.createSheet("SendLogs");
+		Row header = sheet.createRow(0);
+		header.createCell(0).setCellValue("Product No.");
+		header.createCell(1).setCellValue("Product Name");
 
-        Row header = sheet.createRow(0);
-        header.createCell(1).setCellValue("Action Type");
-        header.createCell(2).setCellValue("Content");
-        header.createCell(3).setCellValue("Time Taken (ms)");
-        header.createCell(4).setCellValue("Timestamp");
+		int rowCount = 1;
 
-        int rowNum = 1;
+		while (true) {
 
-        String[] messages = {"Hello", "How are you?", "This is update", "File coming next", "Photo coming next"};
-        String[] filePaths = {"lab1.pdf", "lab1.pdf", "lab3.pdf", "lab3.pdf", "lab3.pdf"};
-        String[] photoPaths = {"A.jpg", "B.jpg", "C.png", "D.jpg", "E.png"};
+			// Collect product titles
+			List<WebElement> titles = driver.findElements(By.cssSelector(".KzDlHZ"));
 
-        for (String msg : messages) {
-            long start = System.currentTimeMillis();
-            WebElement messageBox = driver.findElement(By.id("replyBox"));
-            messageBox.sendKeys(msg);
-            messageBox.sendKeys(Keys.ENTER);
-            long end = System.currentTimeMillis();
+			for (WebElement title : titles) {
+				String productName = title.getText();
+				if (!productName.trim().isEmpty()) {
+					Row row = sheet.createRow(rowCount++);
+					row.createCell(0).setCellValue(rowCount - 1);
+					row.createCell(1).setCellValue(productName);
+				}
+			}
 
-            Row row = sheet.createRow(rowNum++);
-            row.createCell(1).setCellValue("Message");
-            row.createCell(2).setCellValue(msg);
-            row.createCell(3).setCellValue(end - start);
-            row.createCell(4).setCellValue(getTimeStamp());
+			// Try to find and click Next button
+			try {
+				List<WebElement> nextButtons = driver.findElements(By.xpath("//span[text()='Next']/ancestor::a[1]"));
+				if (!nextButtons.isEmpty() && nextButtons.get(0).isDisplayed()) {
+					nextButtons.get(0).click();
+					Thread.sleep(2000);
+				} else {
+					break; // No next button -> exit loop
+				}
+			} catch (Exception e) {
+				break; // Element not found or not clickable -> exit loop
+			}
+		}
 
-            Thread.sleep(1000);
-        }
+		// Write to Excel
+		String filePath = "./Flipkart_"+name+".xlsx";
+		FileOutputStream fileOut = new FileOutputStream(filePath);
+		workbook.write(fileOut);
+		fileOut.close();
+		workbook.close();
 
-        for (String file : filePaths) {
-            long start = System.currentTimeMillis();
-            WebElement fileUpload = driver.findElement(By.xpath("//input[@type='file']"));
-            fileUpload.sendKeys(new File(file).getAbsolutePath());
-            driver.findElement(By.xpath("//img[@class='img-fluid p-2']")).click();
-            long end = System.currentTimeMillis();
+		System.out.println("Excel file saved at: " + filePath);
 
-            Row row = sheet.createRow(rowNum++);
-            row.createCell(1).setCellValue("File");
-            row.createCell(2).setCellValue(file);
-            row.createCell(3).setCellValue(end - start);
-            row.createCell(4).setCellValue(getTimeStamp());
-
-            Thread.sleep(2000);
-        }
-
-        for (String photo : photoPaths) {
-            long start = System.currentTimeMillis();
-            WebElement photoUpload = driver.findElement(By.xpath("//input[@type='file']"));
-            photoUpload.sendKeys(new File(photo).getAbsolutePath());
-            driver.findElement(By.xpath("//img[@class='img-fluid p-2']")).click();
-            long end = System.currentTimeMillis();
-
-            Row row = sheet.createRow(rowNum++);
-            row.createCell(1).setCellValue("Photo");
-            row.createCell(2).setCellValue(photo);
-            row.createCell(3).setCellValue(end - start);
-            row.createCell(4).setCellValue(getTimeStamp());
-
-            Thread.sleep(2000);
-        }
-
-        String fileName = "MessageSendLog_Run" + runId + "_" + System.currentTimeMillis() + ".xlsx";
-        FileOutputStream out = new FileOutputStream(fileName);
-        workbook.write(out);
-        out.close();
-        workbook.close();
-
-        driver.quit();
-    }
-
-    private static String getTimeStamp() {
-        return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-    }
+		driver.quit();
+	}
 }
-
-

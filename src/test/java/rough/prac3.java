@@ -15,6 +15,7 @@ public class prac3 {
 
 	@Test
 	    public static void test() {
+		
 	        Faker faker = new Faker();
 
 	        Workbook workbook = new XSSFWorkbook();
